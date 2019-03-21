@@ -8,8 +8,8 @@
   <description>Demo project for Spring Boot</description>
   <modules>
         <module>dubbo-interface</module>
-        <module>user-service-provider</module>
-        <module>order-service-consumer</module>
+        <module>dubbo-user-service-provider</module>
+        <module>dubbo-order-service-consumer</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>

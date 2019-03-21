@@ -1,0 +1,19 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="location" value="classpath:application.properties"/>
+    </bean>
+    <bean id="monitorService" class="com.alibaba.dubbo.monitor.simple.SimpleMonitorService">
+    </bean>
+    <dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}"/>
+    <dubbo:registry client="curator" address="${dubbo.registry.address}"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+    <!-- <dubbo:service interface="com.alibaba.dubbo.monitor.MonitorService" ref="monitorService" delay="-1"/> -->
+	<dubbo:service interface="com.wzf.dubbo.service.DemoService" ref="demoService"/>
+	<!-- <dubbo:service interface="com.wzf.dubbo.service.UserService" ref="userService"/> -->
+    <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService"/>
+</beans>
