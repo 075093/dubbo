@@ -10,10 +10,12 @@
     <bean id="monitorService" class="com.alibaba.dubbo.monitor.simple.SimpleMonitorService">
     </bean>
     <dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}"/>
-    <dubbo:registry client="curator" address="${dubbo.registry.address}"/>
+    <dubbo:registry id="dubbodemo" address="${dubbo.registry.address}"/>
+    <dubbo:registry id="dubbodemo_copy" address="${dubbo.registry.address}"/>
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
     <!-- <dubbo:service interface="com.alibaba.dubbo.monitor.MonitorService" ref="monitorService" delay="-1"/> -->
-	<dubbo:service interface="com.wzf.dubbo.service.DemoService" ref="demoService"/>
-	<!-- <dubbo:service interface="com.wzf.dubbo.service.UserService" ref="userService"/> -->
+    <!-- 声明需要暴露的服务接口 -->
+	<dubbo:service registry="dubbodemo_copy" interface="com.wzf.dubbo.service.DemoService" ref="demoService"/>
+	 <dubbo:service registry="dubbodemo" interface="com.wzf.dubbo.service.UserService" ref="userService"/> 
     <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService"/>
 </beans>
