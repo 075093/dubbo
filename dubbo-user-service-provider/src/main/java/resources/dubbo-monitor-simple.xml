@@ -9,7 +9,7 @@
     </bean>
     <bean id="monitorService" class="com.alibaba.dubbo.monitor.simple.SimpleMonitorService">
     </bean>
-    <dubbo:application name="dubbo-user-service-provider" owner="dubbo"/>
+    <dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}"/>
     <dubbo:registry id="dubbodemo" address="${dubbo.registry.address}"/>
     <dubbo:registry id="dubbodemo_copy" address="${dubbo.registry.address}"/>
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
