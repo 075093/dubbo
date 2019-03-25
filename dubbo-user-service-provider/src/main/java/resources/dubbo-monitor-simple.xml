@@ -16,6 +16,6 @@
     <!-- <dubbo:service interface="com.alibaba.dubbo.monitor.MonitorService" ref="monitorService" delay="-1"/> -->
     <!-- 声明需要暴露的服务接口 -->
 	<dubbo:service registry="dubbodemo_copy" interface="com.wzf.dubbo.service.DemoService" ref="demoService"/>
-	 <dubbo:service registry="dubbodemo" interface="com.wzf.dubbo.service.UserService" ref="userService"/> 
+	<!--  <dubbo:service registry="dubbodemo" interface="com.wzf.dubbo.service.UserService" ref="userService"/>  -->
     <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService"/>
 </beans>
